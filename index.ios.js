@@ -7,11 +7,13 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import BoxContainer from './Demos/Boxs'
+import ComponentDemo from './Demos/ComponentDemo'
 
 class LeaningReactNative extends Component {
   render() {
     return (
-      <BoxContainer />
+      // <BoxContainer />
+      <ComponentDemo />
     );
   }
 }
