@@ -6,16 +6,12 @@
 
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import BoxContainer from './Demos/Boxs'
-import BoxContainer2 from './Demos/Boxs2'
-import ComponentDemo from './Demos/ComponentDemo'
+import Index from './index'
 
 class LeaningReactNative extends Component {
   render() {
     return (
-      // <BoxContainer />
-      // <ComponentDemo />
-      <BoxContainer2 />
+      <Index />
     );
   }
 }
