@@ -10,6 +10,7 @@ import ViewDemo from './DemoComponent/ViewDemo'
 import TextDemo from './DemoComponent/TextDemo'
 import NavigatorDemo from './DemoComponent/NavigatorDemo'
 import TextInputDemo from './DemoComponent/TextInputDemo'
+import TouchableDemo from './DemoComponent/TouchableDemo'
 
 class Index extends Component {
   render() {
@@ -17,7 +18,8 @@ class Index extends Component {
       // <ViewDemo />
       // <TextDemo />
       // <NavigatorDemo />
-      <TextInputDemo />
+      // TextInputDemo />
+      <TouchableDemo />
     );
   }
 }
