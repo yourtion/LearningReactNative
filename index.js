@@ -4,12 +4,14 @@
  */
 
 import React, { Component } from 'react';
-import BoxContainer2 from './Demos/Boxs2'
+
+
+import ViewDemo from './DemoComponent/ViewDemo'
 
 class Index extends Component {
   render() {
     return (
-      <BoxContainer2 />
+      <ViewDemo />
     );
   }
 }
