@@ -6,6 +6,8 @@ import {
   Text,
   View,
   Image,
+  Platform,
+  Navigator,
   NavigatorIOS,
   ScrollView,
   AsyncStorage,
@@ -217,17 +219,75 @@ class GouWu extends Component {
 }
 
 export default class AsyncStorageDemo extends Component {
-  render() {
+  _renderScene(route, navigator) {
+    let Component = route.component;
     return (
-      <NavigatorIOS
-        ref="nav"
-        style={styles.container}
-        initialRoute={
-        {
-          component: List,
-          title: '水果列表'
-        }}/>
-    )
+      <Component {...route.params} navigator={navigator} />
+    );
+  }
+  _renderNavBar() {
+    var routeMapper = {
+      LeftButton(route, navigator, index, navState) {
+        if(index > 0) {
+          return (
+            <TouchableOpacity
+              onPress={() => navigator.pop()}
+              style={styles.nav_button}>
+              <Text style={styles.nav_buttonText}>Back</Text>
+            </TouchableOpacity>
+          );
+        } else {
+          return null;
+        }
+      },
+      RightButton(route, navigator, index, navState) {
+        if(index > 0 && route.rightButton) {
+          return (
+            <TouchableOpacity
+              onPress={route.rightButton.press}
+              style={styles.nav_button}>
+              <Text style={styles.nav_buttonText}>{route.rightButton.title}</Text>
+            </TouchableOpacity>
+          );
+        } else {
+          return null;
+        }
+
+      },
+      Title(route, navigator, index, navState) {
+        return (
+          <View style={styles.nav_title}>
+            <Text style={styles.nav_buttonText}>{route.title ? route.title : '水果列表'}</Text>
+          </View>
+        );
+      }
+    };
+
+    return (
+      <Navigator.NavigationBar
+        style={styles.nav_bar}
+        routeMapper={routeMapper}
+      />
+    );
+  }
+  render() {
+    if (Platform.OS === 'ios') {
+      return (
+        <NavigatorIOS
+          ref="nav"
+          style={styles.container}
+          initialRoute={
+          {component: List, title: '水果列表'}}/>
+      )
+    }
+      return (
+        <Navigator
+          initialRoute={{component: List, title: '水果列表'}}
+          renderScene={this._renderScene}
+          sceneStyle={{paddingTop: 66, backgroundColor:"#FFF"}}
+          navigationBar={this._renderNavBar()} />
+      );
+
   }
 }
 
@@ -243,13 +303,13 @@ const styles = StyleSheet.create({
     flex:1,
     marginLeft:5,
     borderWidth:1,
-    borderColor:'#ddd',
+    borderColor:'#DDD',
     marginRight:5,
     height:100,
   },
   img:{
     flex:1,
-    backgroundColor: 'transparent'
+    backgroundColor: '#FFF'
   },
   item_text:{
     backgroundColor: '#000',
@@ -264,7 +324,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#FF7200',
     height:33,
     textAlign:'center',
-    color:'#fff',
+    color:'#FFF',
     marginLeft:10,
     marginRight:10,
     lineHeight:24,
@@ -278,7 +338,7 @@ const styles = StyleSheet.create({
     borderWidth:1,
     height:30,
     borderRadius:3,
-    borderColor:'#ddd'
+    borderColor:'#DDD'
   },
   list_item_desc:{
     flex:2,
@@ -294,12 +354,36 @@ const styles = StyleSheet.create({
     backgroundColor:'#FFF',
     color:'#000',
     borderWidth:1,
-    borderColor:'#ddd',
+    borderColor:'#DDD',
     marginLeft:10,
     marginRight:10,
     lineHeight:24,
     height:33,
     fontSize:18,
     textAlign:'center',
+  },
+  nav_bar: {
+    alignItems: 'center',
+    backgroundColor: '#FF7200',
+    shadowOffset:{
+      width: 1,
+      height: 0.5,
+    },
+    shadowColor: '#FF7200',
+    shadowOpacity: 0.8,
+  },
+  nav_title: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nav_button: {
+    flex: 1,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nav_buttonText: {
+    fontSize: 18, color: '#FFFFFF', fontWeight: '400'
   }
 });
