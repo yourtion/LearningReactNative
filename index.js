@@ -12,6 +12,7 @@ import NavigatorDemo from './DemoComponent/NavigatorDemo'
 import TextInputDemo from './DemoComponent/TextInputDemo'
 import TouchableDemo from './DemoComponent/TouchableDemo'
 import ImageDemo from './DemoComponent/ImageDemo'
+import WebViewDemo from './DemoComponent/WebViewDemo'
 
 class Index extends Component {
   render() {
@@ -21,7 +22,8 @@ class Index extends Component {
       // <NavigatorDemo />
       // TextInputDemo />
       // <TouchableDemo />
-      <ImageDemo />
+      // <ImageDemo />
+      <WebViewDemo />
     );
   }
 }
