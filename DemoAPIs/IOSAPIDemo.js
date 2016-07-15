@@ -6,6 +6,7 @@ import {
   Text,
   View,
   AlertIOS,
+  ActionSheetIOS,
 } from 'react-native';
 
 class AlertIOSView extends Component {
@@ -34,11 +35,45 @@ class AlertIOSView extends Component {
   }
 }
 
+class ActionSheetIOSView extends Component {
+
+  render() {
+    return (
+      <View style={styles.flex}>
+        <Text style={styles.item} onPress={this._tip}>showActionSheetWithOptions</Text>
+        <Text style={styles.item} onPress={this._share}>Show ShareActionSheet with Options</Text>
+      </View>
+    )
+  }
+
+  _tip() {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: ['拨打电话', '发送邮件', '发送短信', '取消'],
+        cancelButtonIndex: 3,
+        destructiveButtonKey: 0,
+      },
+      (index)=> alert(index)
+    );
+  }
+
+  _share() {
+    ActionSheetIOS.showShareActionSheetWithOptions(
+      {
+        url: 'http://demo.yourtion.com'
+      },
+      (err) => alert(err),
+      (e) => alert(e)
+    );
+  }
+}
+
 export default class IOSAPIDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
         <AlertIOSView />
+        <ActionSheetIOSView />
       </View>
     )
   }
