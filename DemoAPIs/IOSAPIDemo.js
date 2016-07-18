@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Platform,
   AlertIOS,
   ActionSheetIOS,
 } from 'react-native';
@@ -70,12 +71,20 @@ class ActionSheetIOSView extends Component {
 
 export default class IOSAPIDemo extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <AlertIOSView />
-        <ActionSheetIOSView />
-      </View>
-    )
+    if (Platform.OS === 'ios') {
+      return (
+        <View style={styles.container}>
+          <AlertIOSView />
+          <ActionSheetIOSView />
+        </View>
+      )
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text> Android is not support !</Text>
+        </View>
+      )
+    }
   }
 }
 
