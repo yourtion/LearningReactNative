@@ -6,6 +6,7 @@ import {
   Text,
   View,
   PixelRatio,
+  NetInfo,
 } from 'react-native';
 
 class PixelRatioView extends Component {
@@ -21,11 +22,43 @@ class PixelRatioView extends Component {
   }
 }
 
+class NetInfoView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    NetInfo.fetch().then(reach => {
+      this.setState({
+        reachability: reach
+      });
+    }).catch(alert);
+
+    NetInfo.isConnected.fetch().then(isConnected => {
+      this.setState({
+        connected: isConnected ? 'online' : 'offline'
+      });
+    }).catch(alert);
+  }
+
+  render() {
+    return (
+      <View style={styles.flex}>
+        <Text>NetInfo :</Text>
+        <Text>Reachability : {this.state.reachability}</Text>
+        <Text>Connected : {this.state.connected}</Text>
+      </View>
+    )
+  }
+}
+
 export default class IOSAPIDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
         <PixelRatioView />
+        <NetInfoView />
       </View>
     )
   }
