@@ -10,6 +10,8 @@ import {
   Vibration,
 } from 'react-native';
 
+import Geolocation from 'Geolocation'
+
 class PixelRatioView extends Component {
 
   render() {
@@ -73,6 +75,23 @@ class VibrationView extends Component {
   }
 }
 
+class GeolocationView extends Component {
+  render() {
+    return (
+      <View style={styles.flex}>
+        <Text style={styles.btn} onPress={this._get_geo}>获取位置</Text>
+      </View>
+    )
+  }
+
+  _get_geo() {
+    Geolocation.getCurrentPosition(
+      (data) => alert(JSON.stringify(data)),
+      (error) => alert(error.message)
+    );
+  }
+}
+
 export default class IOSAPIDemo extends Component {
   render() {
     return (
@@ -80,6 +99,7 @@ export default class IOSAPIDemo extends Component {
         <PixelRatioView />
         <NetInfoView />
         <VibrationView />
+        <GeolocationView />
       </View>
     )
   }
