@@ -5,21 +5,12 @@
 
 import React, { Component } from 'react';
 
-
-import AsyncStorageDemo from './DemoAPIs/AsyncStorageDemo'
-import IOSAPIDemo from './DemoAPIs/IOSAPIDemo'
-import CommomAPIDemo from './DemoAPIs/CommomAPIDemo'
-import CameraRollDemo from './DemoAPIs/CameraRollDemo'
-import RequestDemo from './DemoAPIs/RequestDemo'
+import CalendarDemo from './DemoCalendar/CalendarDemo'
 
 export default class Index extends Component {
   render() {
     return (
-      // <AsyncStorageDemo />
-      // <IOSAPIDemo />
-      // <CommomAPIDemo />
-      // <CameraRollDemo />
-      <RequestDemo />
+      <CalendarDemo />
     );
   }
 }
