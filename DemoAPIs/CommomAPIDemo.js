@@ -7,6 +7,7 @@ import {
   View,
   PixelRatio,
   NetInfo,
+  Vibration,
 } from 'react-native';
 
 class PixelRatioView extends Component {
@@ -53,12 +54,32 @@ class NetInfoView extends Component {
   }
 }
 
+class VibrationView extends Component {
+  render() {
+    return (
+      <View style={styles.flex}>
+        <Text style={styles.btn} onPress={this._vibration1}>振动一下</Text>
+        <Text style={styles.btn} onPress={this._vibration2}>振动几下</Text>
+      </View>
+    )
+  }
+
+  _vibration1() {
+    Vibration.vibrate();
+  }
+
+  _vibration2() {
+    Vibration.vibrate([0, 500, 200, 500]);
+  }
+}
+
 export default class IOSAPIDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
         <PixelRatioView />
         <NetInfoView />
+        <VibrationView />
       </View>
     )
   }
@@ -83,5 +104,16 @@ const styles = StyleSheet.create({
     borderWidth: 1/PixelRatio.get(),
     borderColor: 'red',
     height: 40,
+  },
+  btn: {
+    marginTop: 20,
+    marginRight: 10,
+    marginLeft: 10,
+    height: 35,
+    backgroundColor: '#3BC1FF',
+    color: '#FFF',
+    lineHeight: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

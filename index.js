@@ -16,8 +16,8 @@ export default class Index extends Component {
     return (
       // <AsyncStorageDemo />
       // <IOSAPIDemo />
-      // <CommomAPIDemo />
-      <CameraRollDemo />
+      <CommomAPIDemo />
+      // <CameraRollDemo />
     );
   }
 }
