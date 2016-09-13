@@ -10,5 +10,10 @@
   "dependencies": {
     "react": "15.2.1",
     "react-native": "0.29.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-plugin-react": "^6.2.0",
+    "eslint-plugin-react-native": "^2.0.0"
   }
 }
