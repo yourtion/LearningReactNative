@@ -7,7 +7,7 @@ import {
   StatusBar,
   Text,
 } from 'react-native';
-import Calendar from './Calendar'
+import Calendar from './Calendar';
 
 StatusBar.setHidden(true);
 
@@ -17,20 +17,20 @@ export default class CalendarDemo extends Component {
       '2016-10-1': '国庆节',
       '2016-9-10': '教师节',
       '2016-1-1': '元旦节',
-      '2016-11-11': '双十一'
+      '2016-11-11': '双十一',
     };
     const check = {
       '2016-10-1': 'checked',
       '2016-9-1': 'checked',
       '2016-7-10': 'checked',
-      '2016-9-10': 'checked'
+      '2016-9-10': 'checked',
     };
-    const headerBGStyle ={
+    const headerBGStyle = {
       backgroundColor: '#3C9BFD',
     };
-    const headerStyle ={
+    const headerStyle = {
       backgroundColor: '#3C9BFD',
-      color:'#FFF',
+      color: '#FFF',
       fontSize: 15,
       fontWeight: '500',
     };
@@ -44,13 +44,13 @@ export default class CalendarDemo extends Component {
           check={check}
         />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'blue'
-  }
+    backgroundColor: 'blue',
+  },
 });

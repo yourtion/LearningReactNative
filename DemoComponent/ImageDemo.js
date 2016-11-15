@@ -13,7 +13,7 @@ const imgs = [
   'https://blog.yourtion.com/images/2016/03/backup0.png',
   'https://blog.yourtion.com/images/2016/03/backup1.png',
   'https://blog.yourtion.com/images/2016/03/backup2.png',
-  'https://blog.yourtion.com/images/2016/03/backup3.png'
+  'https://blog.yourtion.com/images/2016/03/backup3.png',
 ];
 
 class MyImage extends Component {
@@ -22,7 +22,7 @@ class MyImage extends Component {
 
     const imgs = this.props.imgs;
     this.state = {
-      imgs: imgs,
+      imgs,
       count: 0,
     };
   }
@@ -32,7 +32,7 @@ class MyImage extends Component {
     count++;
     if (count < this.state.imgs.length){
       this.setState({
-        count: count
+        count,
       });
     }
   }
@@ -41,7 +41,7 @@ class MyImage extends Component {
     count--;
     if (count > 0){
       this.setState({
-        count: count
+        count,
       });
     }
   }
@@ -51,7 +51,7 @@ class MyImage extends Component {
       <View style={styles.flex}>
         <View style={styles.image}>
           <Image style={styles.img}
-            source={{uri: this.state.imgs[this.state.count]}}
+            source={{ uri: this.state.imgs[this.state.count] }}
             resizeMode="contain" />
         </View>
         <View style={styles.btns}>
@@ -67,52 +67,52 @@ class MyImage extends Component {
           </TouchableOpacity>
         </View>
       </View>
-    )
+    );
   }
 }
 
 export default class ImageDemo extends Component {
   render() {
     return (
-      <View style={[styles.flex, styles.main]}>
+      <View style={[ styles.flex, styles.main ]}>
         <MyImage imgs={imgs} />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  flex:{
+  flex: {
     flex: 1,
-    alignItems:'center'
+    alignItems: 'center',
   },
   main: {
     marginTop: 40,
   },
-  image:{
-    borderWidth:1,
-    width:300,
-    height:200,
-    borderRadius:5,
-    borderColor:'#ccc'
+  image: {
+    borderWidth: 1,
+    width: 300,
+    height: 200,
+    borderRadius: 5,
+    borderColor: '#ccc',
   },
-  img:{
-    height:200,
-    width:300,
+  img: {
+    height: 200,
+    width: 300,
   },
-  btns:{
+  btns: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop:20
+    marginTop: 20,
   },
-  btn:{
-    width:60,
-    height:30,
+  btn: {
+    width: 60,
+    height: 30,
     borderColor: '#0089FF',
     borderWidth: 1,
     justifyContent: 'center',
-    alignItems:'center',
-    borderRadius:3,
-    marginRight:20,
+    alignItems: 'center',
+    borderRadius: 3,
+    marginRight: 20,
   },
 });

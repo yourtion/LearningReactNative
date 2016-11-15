@@ -9,35 +9,35 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-//设定内置的属性
-//选中项，例如：_type_0_2 表示第一个Tab选中，并且第二个Tab中的第三项选中
+// 设定内置的属性
+// 选中项，例如：_type_0_2 表示第一个Tab选中，并且第二个Tab中的第三项选中
 const prefixType = '_type_';
 
-//选中项样式，例如：_style_0_2 表示第一个Tab选中，并且第二个Tab中的第三项选中时的样式
+// 选中项样式，例如：_style_0_2 表示第一个Tab选中，并且第二个Tab中的第三项选中时的样式
 const prefixStyle = '_style_';
 
-//默认左侧选中的背景颜色
+// 默认左侧选中的背景颜色
 const defaultBackgroundColor = { backgroundColor: '#FFF' };
 
 export default class TabMenu extends Component {
   constructor(props) {
     super(props);
     const data = this.props.data;
-    //左侧选择的index
-    let nSelected = this.props.nSelected;
-    //头部选择的index
-    let tabSelected = this.props.tabSelected;
-    let obj = {};
+    // 左侧选择的index
+    const nSelected = this.props.nSelected;
+    // 头部选择的index
+    const tabSelected = this.props.tabSelected;
+    const obj = {};
     let kIndex = 0;
     for (const k in data) {
       const childData = data[k];
       let cIndex = 0;
       for (const c in childData) {
-        var type = prefixType + k + '_' + c;
-        var style = prefixStyle + k + '_' + c;
+        const type = prefixType + k + '_' + c;
+        const style = prefixStyle + k + '_' + c;
         obj[type] = false;
         obj[style] = {};
-        //设定默认选中项
+        // 设定默认选中项
         if (nSelected === cIndex && tabSelected === kIndex) {
           obj[type] = true;
           obj[style] = defaultBackgroundColor;
@@ -57,14 +57,14 @@ export default class TabMenu extends Component {
     const right = this.renderRight();
     return (
       <View style={styles.container}>
-        <View style={[styles.row, styles.header]}>
+        <View style={[ styles.row, styles.header ]}>
           {header}
         </View>
-        <View style={[styles.row, styles.flex_1]}>
-          <ScrollView style={[styles.flex_1, styles.left_pannel]}>
+        <View style={[ styles.row, styles.flex_1 ]}>
+          <ScrollView style={[ styles.flex_1, styles.left_pannel ]}>
             {left}
           </ScrollView>
-          <ScrollView style={[styles.flex_1, styles.right_pannel]}>
+          <ScrollView style={[ styles.flex_1, styles.right_pannel ]}>
             {right}
           </ScrollView>
 
@@ -73,21 +73,21 @@ export default class TabMenu extends Component {
     );
   }
 
-  //渲染头部TabBar
+  // 渲染头部TabBar
   renderHeader() {
     const data = this.props.data;
     const tabSelected = this.state.tabSelected;
-    let header = [];
+    const header = [];
     let tabIndex = 0;
     for (const i in data) {
-      var tabStyle = null;
+      let tabStyle = null;
       if (tabIndex === tabSelected) {
-        tabStyle = [styles.header_text, styles.active_blue];
+        tabStyle = [ styles.header_text, styles.active_blue ];
       } else {
-        tabStyle = [styles.header_text];
+        tabStyle = [ styles.header_text ];
       }
       header.push(
-        <TouchableOpacity key={i} style={[styles.flex_1, styles.center]}
+        <TouchableOpacity key={i} style={[ styles.flex_1, styles.center ]}
                           onPress={this.headerPress.bind(this, i)}>
           <Text style={tabStyle}>{i}</Text>
         </TouchableOpacity>
@@ -97,19 +97,19 @@ export default class TabMenu extends Component {
     return header;
   }
 
-  //渲染左侧
+  // 渲染左侧
   renderLeft() {
     const data = this.props.data;
     const tabSelected = this.state.tabSelected;
-    let leftPannel = [];
+    const leftPannel = [];
     let index = 0;
     for (const i in data) {
       if (index === tabSelected) {
         for (const k in data[i]) {
-          var style = this.state[prefixStyle + i + '_' + k];
+          const style = this.state[prefixStyle + i + '_' + k];
           leftPannel.push(
             <Text key={i + '_' + k} onPress={this.leftPress.bind(this, i, k)}
-                  style={[styles.left_row, style]}>{k}</Text>);
+                  style={[ styles.left_row, style ]}>{k}</Text>);
         }
         break;
       }
@@ -118,13 +118,13 @@ export default class TabMenu extends Component {
     return leftPannel;
   }
 
-  //渲染右边，二级菜单
+  // 渲染右边，二级菜单
   renderRight() {
     const data = this.props.data;
     const tabSelected = this.state.tabSelected;
     const nSelected = this.state.nSelected;
     let index = 0;
-    let rightPannel = [];
+    const rightPannel = [];
     for (const i in data) {
       if (tabSelected === index) {
         for (const k in data[i]) {
@@ -142,11 +142,11 @@ export default class TabMenu extends Component {
     return rightPannel;
   }
 
-  //点击左侧，展示右侧二级菜单
+  // 点击左侧，展示右侧二级菜单
   leftPress(tabIndex, nIndex) {
-    let obj = {};
+    const obj = {};
     for (const k in this.state) {
-      //将prefixType或者prefixStyle类型全部置false
+      // 将prefixType或者prefixStyle类型全部置false
       if (k.indexOf(prefixType) > -1) {
         obj[k] = false;
         this.setState(obj);
@@ -161,7 +161,7 @@ export default class TabMenu extends Component {
     this.setState(obj);
   }
 
-  //头部点击事件即Tab切换事件
+  // 头部点击事件即Tab切换事件
   headerPress(title) {
     const data = this.props.data;
     let index = 0;
@@ -170,8 +170,8 @@ export default class TabMenu extends Component {
         this.setState({
           tabSelected: index,
         });
-        var obj = {};
-        var n = 0;
+        const obj = {};
+        let n = 0;
         for (const k in data[i]) {
           if (n !== 0) {
             obj[prefixType + i + '_' + k] = false;
@@ -195,19 +195,19 @@ const styles = StyleSheet.create({
     flex: 1,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: '#DDD'
+    borderColor: '#DDD',
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   flex_1: {
-    flex: 1
+    flex: 1,
   },
   header: {
     height: 35,
     borderBottomWidth: 1,
     borderColor: '#DFDFDF',
-    backgroundColor: '#F5F5F5'
+    backgroundColor: '#F5F5F5',
   },
   header_text: {
     color: '#7B7B7B',
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
   },
   center: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   left_pannel: {
     backgroundColor: '#F2F2F2',
@@ -233,6 +233,6 @@ const styles = StyleSheet.create({
     color: '#00B7EB',
   },
   active_fff: {
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
   },
 });

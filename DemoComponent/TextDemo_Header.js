@@ -18,7 +18,7 @@ export default class Header extends Component {
           <Text>有态度°</Text>
         </Text>
       </View>
-    )
+    );
   }
 }
 
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   flex: {
     marginTop: 25,
     height: 50,
-    borderBottomWidth: 3/PixelRatio.get(),
+    borderBottomWidth: 3 / PixelRatio.get(),
     borderBottomColor: '#EF2D36',
     alignItems: 'center',
   },

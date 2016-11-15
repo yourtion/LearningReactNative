@@ -23,11 +23,11 @@ export default class RequestDemo extends Component {
           Fetch请求数据
         </Text>
       </View>
-    )
+    );
   }
 
   _doXMLHttpRequest() {
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.onreadystatechange = (e) => {
       if (request.readyState !== 4) {
         return;

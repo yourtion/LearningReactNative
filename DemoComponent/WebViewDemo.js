@@ -16,10 +16,10 @@ export default class WebViewDemo extends Component {
         <WebView
           injectedJavaScript={alert('Hello Yourtion !')}
           bounces={false}
-          source={{uri: 'https://blog.yourtion.com/'}}
+          source={{ uri: 'https://blog.yourtion.com/' }}
           style={styles.webview} />
       </View>
-    )
+    );
   }
 }
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   webview: {
-    width: width,
-    height: height,
+    width,
+    height,
   },
 });

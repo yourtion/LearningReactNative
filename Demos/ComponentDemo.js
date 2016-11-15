@@ -5,11 +5,11 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 });
 
 class HelloMessage extends Component {
-  render () {
+  render() {
     return (
       <Text> Hello {this.props.name} </Text>
     );
@@ -26,7 +26,7 @@ class HelloMessage extends Component {
 }
 
 class Child extends Component {
-  render () {
+  render() {
     return (
       <Text> {this.props.name} </Text>
     );
@@ -39,7 +39,7 @@ class Parent extends Component {
     console.log(this.refs.child);
   }
 
-  render () {
+  render() {
     return (
       <TouchableHighlight onPress={this.click.bind(this)}>
         <View onClick={this.click}>
@@ -53,7 +53,7 @@ class Parent extends Component {
 
 class ComponentDemo extends Component {
   render() {
-    return (      
+    return (
       <View style={styles.container}>
         <HelloMessage name="Yourtion" />
         <Parent name="Yourtion Guo" />

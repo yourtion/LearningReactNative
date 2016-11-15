@@ -19,9 +19,9 @@ class List extends Component {
       component: Detail,
       rightButton: {
         title: '购物车',
-        press: () => { alert('进入我的购物车'); }
-      }
-    })
+        press: () => { alert('进入我的购物车'); },
+      },
+    });
   }
 
   render() {
@@ -48,13 +48,13 @@ class Detail extends Component {
 
 export default class NavigatorDemo extends Component {
   _renderScene(route, navigator) {
-    let Component = route.component;
+    const Component = route.component;
     return (
       <Component {...route.params} navigator={navigator} />
     );
   }
   _renderNavBar() {
-    var routeMapper = {
+    const routeMapper = {
       LeftButton(route, navigator, index, navState) {
         if(index > 0) {
           return (
@@ -64,9 +64,8 @@ export default class NavigatorDemo extends Component {
               <Text style={styles.nav_buttonText}>Back</Text>
             </TouchableOpacity>
           );
-        } else {
-          return null;
         }
+        return null;
       },
       RightButton(route, navigator, index, navState) {
         if(index > 0 && route.rightButton) {
@@ -77,10 +76,8 @@ export default class NavigatorDemo extends Component {
               <Text style={styles.nav_buttonText}>{route.rightButton.title}</Text>
             </TouchableOpacity>
           );
-        } else {
-          return null;
         }
-
+        return null;
       },
       Title(route, navigator, index, navState) {
         return (
@@ -88,7 +85,7 @@ export default class NavigatorDemo extends Component {
             <Text style={styles.nav_buttonText}>{route.title ? route.title : '邮轮'}</Text>
           </View>
         );
-      }
+      },
     };
 
     return (
@@ -101,29 +98,29 @@ export default class NavigatorDemo extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{component: List}}
+        initialRoute={{ component: List }}
         renderScene={this._renderScene}
-        sceneStyle={{paddingTop: (Platform.OS === 'android' ? 66 : 74)}}
+        sceneStyle={{ paddingTop: (Platform.OS === 'android' ? 66 : 74) }}
         navigationBar={this._renderNavBar()} />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  flex:{
+  flex: {
     flex: 1,
     padding: 10,
   },
-  list_item:{
-    lineHeight:25,
-    fontSize:16,
-    marginLeft:10,
-    marginRight:10
+  list_item: {
+    lineHeight: 25,
+    fontSize: 16,
+    marginLeft: 10,
+    marginRight: 10,
   },
   nav_bar: {
     alignItems: 'center',
     backgroundColor: '#55ACEE',
-    shadowOffset:{
+    shadowOffset: {
       width: 1,
       height: 0.5,
     },
@@ -142,6 +139,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nav_buttonText: {
-    fontSize: 18, color: '#FFFFFF', fontWeight: '400'
-  }
+    fontSize: 18, color: '#FFFFFF', fontWeight: '400',
+  },
 });

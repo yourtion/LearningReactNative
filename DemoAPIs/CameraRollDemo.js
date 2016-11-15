@@ -15,36 +15,36 @@ const fetchParams = {
   first: 4,
   assetType: 'Photos',
 };
-const imgURL = 'https://blog.yourtion.com/images/2016/03/'; //backup0.png
+const imgURL = 'https://blog.yourtion.com/images/2016/03/'; // backup0.png
 
 export default class CameraRollDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: null
+      photos: null,
     };
   }
 
   componentDidMount() {
     CameraRoll.getPhotos(fetchParams).then((data) => {
       const edges = data.edges;
-      let photos = [];
+      const photos = [];
       for(const photo of edges) {
         photos.push(photo.node.image.uri);
       }
       this.setState({
-        photos: photos
+        photos,
       });
     }).catch(alert);
   }
 
   saveImg(img1) {
-    CameraRoll.saveToCameraRoll(imgURL + img1, 'photo').then((url) =>{
+    CameraRoll.saveToCameraRoll(imgURL + img1, 'photo').then((url) => {
       if (url){
-        let photos = this.state.photos;
+        const photos = this.state.photos;
         photos.unshift(url);
         this.setState({
-          photos: photos
+          photos,
         });
         alert('保存成功');
       }
@@ -54,21 +54,21 @@ export default class CameraRollDemo extends Component {
 
   render() {
     const photos = this.state.photos || [];
-    let photosView = [];
+    const photosView = [];
     for(let i = 0; i < 4; i += 2) {
       photosView.push(
         <View style={styles.row} key={i}>
           <View style={styles.flex}>
             <Image
               resizeMode='stretch'
-              style={[styles.imgHeight, styles.m5]}
-              source={{uri: photos[parseInt(i)]}} />
+              style={[ styles.imgHeight, styles.m5 ]}
+              source={{ uri: photos[parseInt(i, 10)] }} />
           </View>
           <View style={styles.flex}>
             <Image
               resizeMode='stretch'
-              style={[styles.imgHeight, styles.m5]}
-              source={{uri: photos[parseInt(i) + 1]}} />
+              style={[ styles.imgHeight, styles.m5 ]}
+              source={{ uri: photos[parseInt(i, 10) + 1] }} />
           </View>
         </View>
       );
@@ -79,14 +79,14 @@ export default class CameraRollDemo extends Component {
           <View style={styles.flex}>
             <Image
               resizeMode='stretch'
-              style={[styles.imgHeight, styles.m5]}
-              source={{uri: imgURL + 'backup0.png'}} />
+              style={[ styles.imgHeight, styles.m5 ]}
+              source={{ uri: imgURL + 'backup0.png' }} />
           </View>
           <View style={styles.flex}>
             <Image
               resizeMode='stretch'
-              style={[styles.imgHeight, styles.m5]}
-              source={{uri: imgURL + 'backup1.png'}} />
+              style={[ styles.imgHeight, styles.m5 ]}
+              source={{ uri: imgURL + 'backup1.png' }} />
           </View>
         </View>
         <View>
@@ -97,7 +97,7 @@ export default class CameraRollDemo extends Component {
           {photosView}
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     flex: 1,
   },
-  marginTop20:{
+  marginTop20: {
     marginTop: 20,
   },
   m5: {

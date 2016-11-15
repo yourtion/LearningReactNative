@@ -12,7 +12,7 @@ import {
 
 class Highlight extends Component {
   show(text) {
-    alert(text)
+    alert(text);
   }
   render() {
     return (
@@ -30,13 +30,13 @@ class Highlight extends Component {
           </TouchableHighlight>
         </View>
       </View>
-    )
+    );
   }
 }
 
 class Opacity extends Component {
   show(text) {
-    alert(text)
+    alert(text);
   }
   render() {
     return (
@@ -55,7 +55,7 @@ class Opacity extends Component {
           </TouchableOpacity>
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -68,7 +68,7 @@ export default class TouchableDemo extends Component {
         <Text>Opacity: </Text>
         <Opacity />
       </View>
-    )
+    );
   }
 }
 

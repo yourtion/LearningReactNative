@@ -13,7 +13,7 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
     };
   }
 
@@ -21,7 +21,7 @@ class Search extends Component {
     const value = text;
     this.setState({
       show: true,
-      value: value,
+      value,
     });
   }
 
@@ -35,7 +35,7 @@ class Search extends Component {
   render() {
     return (
       <View style={styles.flex}>
-        <View style={[styles.flexDirection, styles.inputHeight]}>
+        <View style={[ styles.flexDirection, styles.inputHeight ]}>
           <View style={styles.flex}>
             <TextInput
               style={styles.input}
@@ -52,7 +52,7 @@ class Search extends Component {
           </View>
         </View>
         {this.state.show ?
-          <View style={[styles.result]}>
+          <View style={[ styles.result ]}>
             <Text onPress={this.hide.bind(this, this.state.value + '庄')}
                   style={styles.item} numberOfLines={1}>{this.state.value}庄</Text>
             <Text onPress={this.hide.bind(this, this.state.value + '园街')}
@@ -67,7 +67,7 @@ class Search extends Component {
           : null
         }
       </View>
-    )
+    );
   }
 }
 
@@ -75,36 +75,36 @@ class Search extends Component {
 export default class TextInputDemo extends Component {
   render() {
     return (
-      <View style={[styles.flex, styles.topStatus]}>
+      <View style={[ styles.flex, styles.topStatus ]}>
         <Search />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  flex:{
+  flex: {
     flex: 1,
   },
-  flexDirection:{
+  flexDirection: {
     flexDirection: 'row',
   },
-  topStatus:{
+  topStatus: {
     marginTop: 25,
   },
-  inputHeight:{
+  inputHeight: {
     height: 45,
   },
-  input:{
+  input: {
     height: 45,
     borderWidth: 1,
     marginLeft: 5,
-    paddingLeft:5,
+    paddingLeft: 5,
     borderColor: '#CCC',
     borderRadius: 4,
   },
-  btn:{
-    width:55,
+  btn: {
+    width: 55,
     marginLeft: -5,
     marginRight: 5,
     backgroundColor: '#23BEFF',
@@ -112,26 +112,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  search:{
+  search: {
     color: '#FFF',
     fontSize: 15,
     fontWeight: 'bold',
   },
-  result:{
-    marginTop: 1/PixelRatio.get(),
+  result: {
+    marginTop: 1 / PixelRatio.get(),
     marginLeft: 5,
     marginRight: 5,
     height: 200,
     borderColor: '#CCC',
-    borderTopWidth: 1/PixelRatio.get(),
+    borderTopWidth: 1 / PixelRatio.get(),
   },
-  item:{
+  item: {
     fontSize: 16,
     padding: 5,
     paddingTop: 10,
     paddingBottom: 10,
-    borderWidth: 1/PixelRatio.get(),
+    borderWidth: 1 / PixelRatio.get(),
     borderColor: '#DDD',
     borderTopWidth: 0,
-  }
+  },
 });

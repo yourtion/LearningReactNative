@@ -16,7 +16,7 @@ class List extends Component {
       <View style={styles.list_item}>
         <Text style={styles.list_item_font}>{this.props.title}</Text>
       </View>
-    )
+    );
   }
 }
 
@@ -26,10 +26,10 @@ class ImportantNews extends Component {
   }
 
   render() {
-    let news = [];
+    const news = [];
     let i = 0;
     for (const news_item of this.props.news) {
-      var text = (
+      const text = (
         <Text
           onPress={this.show.bind(this, news_item)}
           numberOfLines={2}
@@ -57,7 +57,7 @@ export default class TextDemo extends Component {
       '1、刘慈欣《三体》获“雨果奖”为中国作家首次',
       '2、京津冀协同发展定位明确：北京无经济中心表述',
       '3、好奇宝宝第一次淋雨，父亲用镜头记录了下来',
-      '4、京津冀协同发展定位明确：:北京无经济中心表述+好奇宝宝第一次淋雨，父亲用镜头记录了下来'
+      '4、京津冀协同发展定位明确：:北京无经济中心表述+好奇宝宝第一次淋雨，父亲用镜头记录了下来',
     ];
 
     return (
@@ -69,7 +69,7 @@ export default class TextDemo extends Component {
         <List title='女童遭鲨鱼袭击又下海救伙伴' />
         <ImportantNews news={news} />
       </View>
-    )
+    );
   }
 }
 
@@ -88,17 +88,17 @@ const styles = StyleSheet.create({
   list_item_font: {
     fontSize: 16,
   },
-  news_title:{
+  news_title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#CD1D1C',
     marginLeft: 10,
     marginTop: 15,
   },
-  news_item:{
+  news_item: {
     marginLeft: 10,
     marginRight: 10,
     fontSize: 15,
     lineHeight: 20,
-  }
+  },
 });

@@ -10,7 +10,7 @@ import {
   Vibration,
 } from 'react-native';
 
-import Geolocation from 'Geolocation'
+import Geolocation from 'Geolocation';
 
 class PixelRatioView extends Component {
 
@@ -21,7 +21,7 @@ class PixelRatioView extends Component {
         <View style={styles.prv_1}></View>
         <View style={styles.prv_2}></View>
       </View>
-    )
+    );
   }
 }
 
@@ -34,13 +34,13 @@ class NetInfoView extends Component {
   componentDidMount() {
     NetInfo.fetch().then(reach => {
       this.setState({
-        reachability: reach
+        reachability: reach,
       });
     }).catch(alert);
 
     NetInfo.isConnected.fetch().then(isConnected => {
       this.setState({
-        connected: isConnected ? 'online' : 'offline'
+        connected: isConnected ? 'online' : 'offline',
       });
     }).catch(alert);
   }
@@ -52,7 +52,7 @@ class NetInfoView extends Component {
         <Text>Reachability : {this.state.reachability}</Text>
         <Text>Connected : {this.state.connected}</Text>
       </View>
-    )
+    );
   }
 }
 
@@ -63,7 +63,7 @@ class VibrationView extends Component {
         <Text style={styles.btn} onPress={this._vibration1}>振动一下</Text>
         <Text style={styles.btn} onPress={this._vibration2}>振动几下</Text>
       </View>
-    )
+    );
   }
 
   _vibration1() {
@@ -71,7 +71,7 @@ class VibrationView extends Component {
   }
 
   _vibration2() {
-    Vibration.vibrate([0, 500, 200, 500]);
+    Vibration.vibrate([ 0, 500, 200, 500 ]);
   }
 }
 
@@ -81,7 +81,7 @@ class GeolocationView extends Component {
       <View style={styles.flex}>
         <Text style={styles.btn} onPress={this._get_geo}>获取位置</Text>
       </View>
-    )
+    );
   }
 
   _get_geo() {
@@ -101,12 +101,12 @@ export default class IOSAPIDemo extends Component {
         <VibrationView />
         <GeolocationView />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     marginTop: 25,
   },
@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
   },
-  prv_1:{
+  prv_1: {
     borderWidth: 1,
     borderColor: 'red',
     height: 40,
     marginBottom: 20,
   },
-  prv_2:{
-    borderWidth: 1/PixelRatio.get(),
+  prv_2: {
+    borderWidth: 1 / PixelRatio.get(),
     borderColor: 'red',
     height: 40,
   },
